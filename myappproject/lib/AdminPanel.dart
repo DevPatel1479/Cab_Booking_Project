@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:myappproject/review_req.dart';
 import 'AddEmployee.dart';
 import 'Dashboard_screen.dart';
 
@@ -6,6 +7,7 @@ class AdminPanel extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       home: AdminHome(),
     );
   }
@@ -152,7 +154,6 @@ class _AdminHomeState extends State<AdminHome> {
                                 onPressed: () {
                                   Navigator.push(
                                     context,
-                                    
                                     PageRouteBuilder(
                                       pageBuilder: (context, animation,
                                               secondaryAnimation) =>
@@ -304,7 +305,24 @@ class _AdminHomeState extends State<AdminHome> {
                             height: 40, // Increase button height
                             child: TextButton(
                               onPressed: () {
-                                // Add onPressed logic for the button
+                                Navigator.push(
+                                  context,
+                                  PageRouteBuilder(
+                                    pageBuilder: (context, animation,
+                                            secondaryAnimation) =>
+                                        Request(),
+                                    transitionsBuilder: (context, animation,
+                                        secondaryAnimation, child) {
+                                      return SlideTransition(
+                                        position: Tween<Offset>(
+                                          begin: const Offset(1.0, 0.0),
+                                          end: Offset.zero,
+                                        ).animate(animation),
+                                        child: child,
+                                      );
+                                    },
+                                  ),
+                                );
                               },
                               style: ButtonStyle(
                                 backgroundColor:
