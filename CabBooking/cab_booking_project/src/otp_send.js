@@ -40,6 +40,7 @@ const App = () => {
       <input type="text" placeholder="Phone Number" value={phoneNumber} onChange={(e) => setPhoneNumber(e.target.value)} />
       <button onClick={handleSendOTP}>Send OTP</button>
       <p>{message}</p>
+      <p></p>
     </div>
   );
 };
