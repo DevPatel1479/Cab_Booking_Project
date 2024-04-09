@@ -24,9 +24,9 @@ const transporter = nodemailer.createTransport({
 async function sendOTPByEmail(email, otp) {
   const mailOptions = {
     from: 'devpatel1828king@gmail.com', // Sender email
-    to: 'jatincs117@gmail.com',
+    to: email,
     subject: 'Your OTP for Verification',
-    text: `Your OTP is: ${otp}`
+    text: `Your OTP for GoRide Sign-up is: ${otp}`
   };
 
   try {
