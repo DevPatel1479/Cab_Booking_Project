@@ -1,48 +1,74 @@
-import React, { useState } from 'react';
+import React from 'react'
+import firebase from './firebase'
 
-import firebase from 'firebase/compat/app';
-import 'firebase/compat/auth';
-import 'firebase/compat/database';
+class App extends React.Component {
+  handleChange = (e) =>{
+    const {name, value } = e.target
+    this.setState({
+        [name]: value
+      })
+  }
+  configureCaptcha = () =>{
+    window.recaptchaVerifier = new firebase.auth.RecaptchaVerifier('sign-in-button', {
+      'size': 'invisible',
+      'callback': (response) => {
+        // reCAPTCHA solved, allow signInWithPhoneNumber.
+        this.onSignInSubmit();
+        console.log("Recaptca varified")
+      },
+      defaultCountry: "IN"
+    });
+  }
+  onSignInSubmit = (e) => {
+    e.preventDefault()
+    this.configureCaptcha()
+    const phoneNumber = "+91" + this.state.mobile
+    console.log(phoneNumber)
+    const appVerifier = window.recaptchaVerifier;
+    firebase.auth().signInWithPhoneNumber(phoneNumber, appVerifier)
+        .then((confirmationResult) => {
+          // SMS sent. Prompt user to type the code from the message, then sign the
+          // user in with confirmationResult.confirm(code).
+          window.confirmationResult = confirmationResult;
+          console.log("OTP has been sent")
+          // ...
+        }).catch((error) => {
+          // Error; SMS not sent
+          // ...
+          console.log("SMS not sent", error);
+        });
+  }
+  onSubmitOTP = (e) =>{
+    e.preventDefault()
+    const code = this.state.otp
+    console.log(code)
+    window.confirmationResult.confirm(code).then((result) => {
+      // User signed in successfully.
+      const user = result.user;
+      console.log(JSON.stringify(user))
+      alert("User is verified")
+      // ...
+    }).catch((error) => {
+        alert("Entered Invalid OTP !!!");
+    });
+  }
+  render() {
+    return (
+      <div>
+        <h2>Login Form</h2>
+        <form onSubmit={this.onSignInSubmit}>
+          <div id="sign-in-button"></div>
+          <input type="number" name="mobile" placeholder="Mobile number" required onChange={this.handleChange}/>
+          <button type="submit">Submit</button>
+        </form>
 
-const firebaseConfig = {
-    apiKey: "AIzaSyCcdVnAjkio5WIqPYeTQexER0QgdIhnh1M",
-    authDomain: "webapi-88a91.firebaseapp.com",
-    databaseURL: "https://webapi-88a91-default-rtdb.firebaseio.com",
-    projectId: "webapi-88a91",
-    storageBucket: "webapi-88a91.appspot.com",
-    messagingSenderId: "102122774240",
-    appId: "1:102122774240:web:aedee404a652e9d8cdfa85",
-    measurementId: "G-88KQJJH4MV"
-  
-};
-
-firebase.initializeApp(firebaseConfig);
-
-const App = () => {
-  const [phoneNumber, setPhoneNumber] = useState('');
-  const [message, setMessage] = useState('');
-
-  const handleSendOTP = async () => {
-    try {
-      const recaptchaVerifier = new firebase.auth.RecaptchaVerifier('recaptcha-container');
-      const confirmationResult = await firebase.auth().signInWithPhoneNumber(phoneNumber, recaptchaVerifier);
-      setMessage('OTP sent to your phone.');
-    } catch (error) {
-      console.error(error);
-      setMessage('Failed to send OTP. Please try again.');
-    }
-  };
-
-  return (
-    <div>
-      <h1>Phone Number Authentication</h1>
-      <div id="recaptcha-container"></div>
-      <input type="text" placeholder="Phone Number" value={phoneNumber} onChange={(e) => setPhoneNumber(e.target.value)} />
-      <button onClick={handleSendOTP}>Send OTP</button>
-      <p>{message}</p>
-      <p></p>
-    </div>
-  );
-};
-
-export default App;
+        <h2>Enter OTP</h2>
+        <form onSubmit={this.onSubmitOTP}>
+          <input type="number" name="otp" placeholder="OTP Number" required onChange={this.handleChange}/>
+          <button type="submit">Submit</button>
+        </form>
+      </div>
+    )
+  }
+}
+export default App
