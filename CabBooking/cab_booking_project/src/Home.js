@@ -1,30 +1,23 @@
 import React from 'react';
-
 const Home = () => {
     return (
         <>
             <div className="content">
                 <div className="text-content" data-aos ="slide-right">
-                    <h2>Welcome to GoRide</h2>
-                    
+                    <h2>Welcome to GoRide</h2>                    
                     <p>Experience stress-free travel with GoRide. Book easily, track your ride in real-time, and enjoy safe journeys with our professional drivers. Join us today and discover a new way to travel!</p>
-
                     <br />
                     <br />
                     <button className="button">Start the Journey</button>
-
-
                 </div>
                 <div className="image-content" data-aos ="fade-up">
                 <img src={require('./GoRide_Website.png')} alt="Image 1" height={400} width={500}/>
                 </div>
             </div>
-
             <div className="reverse-content">
                 <div className="reverse-text-content" data-aos ="slide-left">
                     <h2>Become a GoRide Driver</h2>
-                    <p>Experience the joy of driving with GoRide. Join our team of professional drivers and enjoy the freedom of the open road. With flexible schedules and competitive pay, driving for GoRide is more than just a job—it's a rewarding experience.</p>
-                    
+                    <p>Experience the joy of driving with GoRide. Join our team of professional drivers and enjoy the freedom of the open road. With flexible schedules and competitive pay, driving for GoRide is more than just a job—it's a rewarding experience.</p>  
                     <br />
                     <br />
                     <button className="button">Drive On</button>
@@ -34,7 +27,6 @@ const Home = () => {
                 <img src={require('./Driver_img.png')} alt="Image 1" height={400} width={500}/>
                 </div>
             </div>
-
             <div className="content">
                 <div className="text-content" data-aos ="slide-right">
                     <h2>Enjoy the Ride</h2>
@@ -49,8 +41,6 @@ const Home = () => {
                 </div>
             </div>
         </>
-
     );
 }
-
 export default Home;

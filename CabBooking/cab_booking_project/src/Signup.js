@@ -1,7 +1,6 @@
 import React from 'react';
 import { Link, Routes, Route } from 'react-router-dom';
 // import DriverSignUp from './DriverSignUp';
-
 const Signup = () => {
     return (
         <div>
@@ -36,5 +35,4 @@ const Signup = () => {
         </div>
     );
 }
-
 export default Signup;

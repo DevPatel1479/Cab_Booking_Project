@@ -19,7 +19,6 @@ const App = () => {
             AOS.refresh();
         };
     }, []);
-
     return (
         <Router>
             <div className='body'>
@@ -39,16 +38,12 @@ const App = () => {
         </Router>
     );
 }
-
 const Navbar = () => {
     const location = useLocation();
     const [showNavbar, setShowNavbar] = useState(true);
-
     useEffect(() => {
         setShowNavbar(location.pathname !== '/signup/driver' && location.pathname !== '/signup/passenger');
-
     }, [location]);
-
     return (
         <>
             {showNavbar && (
@@ -79,6 +74,4 @@ const Navbar = () => {
         </>
     );
 }
-
 export default App;
-

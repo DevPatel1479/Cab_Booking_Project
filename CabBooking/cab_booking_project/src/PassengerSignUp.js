@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import "./Passenger_SignUp.css";
-
+import { Link } from "react-router-dom";
 import axios from "axios";
 
-axios.defaults.baseURL = 'http://localhost:3000'; // Replace with the IP address of the server
+axios.defaults.baseURL = 'http://localhost:3000';
 
 const PassengerSignUp = () => {
   const [formData, setFormData] = useState({
@@ -19,7 +19,6 @@ const PassengerSignUp = () => {
     const { name, value } = e.target;
     let newValue = value;
     if (name === "phoneNumber") {
-      // Remove spaces and limit to 10 digits
       newValue = value.replace(/\D/g, "").substring(0, 10);
     }
     setFormData({
@@ -43,11 +42,9 @@ const PassengerSignUp = () => {
     e.preventDefault();
     if (validateForm()) {
       try {
-        console.log(formData);
         const url = "http://localhost:3000/api/passenger_data"
         const response = axios.post(url, formData, { headers: { 'Content-Type': 'application/json' } });
         console.log('Form data saved successfully:', (await response).data);
-        // Reset the form after successful submission
         setFormData({
           name: '',
           email: '',
@@ -126,19 +123,15 @@ const PassengerSignUp = () => {
               required
             />
           </div>
-          <button type="submit" className="signup-button">Sign Up</button>
-          <div className="or-line">
-            <span className="or-text">OR</span>
-            <hr />
-          </div>
-          <div className="social-signup">
-            <button className="google-button">Sign Up with Google</button>
-            <button className="facebook-button">Sign Up with Facebook</button>
+          <div className="buttons-container">
+            <button type="submit" className="signup-button">Sign Up</button>
+            <div>
+              <Link to="/signup" className="back-link">Back</Link>
+            </div>
           </div>
         </form>
       </div>
     </div>
   );
 };
-
 export default PassengerSignUp;

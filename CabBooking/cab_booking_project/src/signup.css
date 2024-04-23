@@ -1,0 +1,65 @@
+/* signup.css */
+
+.login-container {
+  display: flex;
+  justify-content: space-between;
+  height: 100vh;
+}
+
+.left-section {
+  flex: 1;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-right: 2px solid #ccc; /* Add border to separate sections */
+}
+
+.right-section {
+  flex: 1;
+  padding: 20px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.right-section img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px; /* Add border radius to the image */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add shadow for better visual */
+  transition: transform 0.3s ease-in-out; /* Add transition for smooth hover effect */
+}
+
+.right-section img:hover {
+  transform: scale(1.05); /* Scale up the image on hover */
+}
+
+.phone-input {
+  display: flex;
+  align-items: center;
+  border: 2px solid #ccc; /* Add border to phone input */
+  border-radius: 8px; /* Add border radius */
+  padding: 5px;
+  transition: border-color 0.3s ease-in-out; /* Add transition for border color */
+}
+
+.phone-input:focus-within {
+  border-color: #007bff; /* Change border color on focus */
+}
+
+.phone-input span {
+  margin-right: 5px;
+}
+
+.error {
+  color: #dc3545; /* Error message color */
+  margin-top: 5px; /* Add space between input and error message */
+  transition: opacity 0.3s ease-in-out; /* Add transition for error message */
+}
+
+.error:empty {
+  height: 0; /* Hide error message when empty */
+  opacity: 0;
+}
