@@ -1,0 +1,126 @@
+/* Main content container */
+.content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f0f0f0; /* Background color for the whole page */
+}
+
+/* Booking container */
+.booking-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 80%;
+    margin: 0 auto; /* Center the container horizontally */
+    max-width: 1200px; /* Limit the maximum width */
+}
+
+/* Booking form styles */
+.booking-form {
+    flex: 1;
+    margin-right: 20px;
+    background-color: #ffffff; /* Background color for the form */
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    display: flex;
+    flex-direction: column; /* Stack components vertically */
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.input-field {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    outline: none;
+}
+
+/* Geocoder container styles */
+.geocoder-container {
+    position: relative; /* Ensure container is positioned */
+    z-index: 1; /* Set z-index to ensure results appear on top */
+    margin-bottom: 20px; /* Add space between geocoder containers */
+    width: 100%; /* Ensure full width */
+}
+
+.geocoder-container input {
+    width: 100%; /* Ensure input elements take full width */
+    box-sizing: border-box; /* Ensure padding does not affect the width */
+}
+
+.mapboxgl-ctrl-geocoder {
+    width: 100%;
+}
+
+#pickup-geocoder {
+    z-index: 2;
+}
+
+#dropoff-geocoder {
+    z-index: 1;
+    margin-top: 10px; /* Add margin to push the dropoff box down */
+}
+
+/* Submit button styles */
+.submit-button {
+    width: 100%;
+    padding: 10px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.submit-button:hover {
+    background-color: #0056b3;
+}
+
+/* Image container styles */
+.image-container {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.ride-image {
+    width: 100%; /* Adjust width as needed */
+    max-height: 500px; /* Adjust height as needed */
+    border-radius: 10px; /* Add border radius for image */
+}
+
+/* Responsive styles */
+@media screen and (max-width: 768px) {
+    .booking-container {
+        flex-direction: column; /* Stack components vertically */
+        width: 90%; /* Adjust width for smaller screens */
+    }
+
+    .booking-form {
+        flex: none; /* Reset flex value to avoid stretching */
+        width: 100%; /* Make the form full width */
+        margin-right: 0; /* Remove right margin */
+        margin-bottom: 20px; /* Add bottom margin */
+    }
+
+    .input-field {
+        font-size: 14px; /* Adjust font size for smaller screens */
+    }
+
+    .geocoder-container {
+        margin-bottom: 10px; /* Reduce margin between geocoder containers */
+    }
+
+    .image-container {
+        width: 100%; /* Make the image container full width */
+    }
+}
