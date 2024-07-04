@@ -1,0 +1,37 @@
+{
+  "name": "nodejsprogram",
+  "version": "1.0.0",
+  "description": "First demo",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Dev",
+  "license": "ISC",
+  "dependencies": {
+    "@serialport/parser-readline": "^12.0.0",
+    "@serialport/stream": "^12.0.0",
+    "axios": "^1.6.8",
+    "bcrypt": "^5.1.1",
+    "cors": "^2.8.5",
+    "express": "^4.18.3",
+    "firebase": "^10.8.1",
+    "firebase-admin": "^12.0.0",
+    "firebase-functions": "^4.9.0",
+    "geoip-lite": "^1.4.10",
+    "google-recaptcha": "^1.1.0",
+    "mongodb": "6.3",
+    "multer": "^1.4.5-lts.1",
+    "node-geoip": "^1.0.1",
+    "node-gpsd": "^0.3.4",
+    "nodemailer": "^6.9.12",
+    "nodemon": "^3.0.3",
+    "serialport": "^12.0.0",
+    "socket.io": "^4.7.5",
+    "socket.io-client": "^4.7.5",
+    "ws": "^8.17.0"
+  },
+  "devDependencies": {
+    "geolocation": "^0.2.0"
+  }
+}
